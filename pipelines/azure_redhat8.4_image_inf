@@ -1,0 +1,18 @@
+pipeline{
+    agent any
+    environment {
+        ARM = credentials('08d41584-c233-47ce-b532-9140a87e6f7c')
+    }
+    stages{
+        stage('Git checkout'){
+            steps{
+                git branch: 'main', credentialsId: 'a4176601-503a-4db9-8610-784f50fd308d', url: 'https://github.com/akguerrero/Packer-Azure-Images'
+            }
+        }
+        stage('Packer build'){
+            steps{
+                bat 'packer build ./packer/azure/red_hat/'
+            }
+        }
+    }
+}
