@@ -1,0 +1,18 @@
+pipeline{
+    agent any
+    environment {
+        ARM = credentials('azure_pipeline')
+    }
+    stages{
+        stage('Git checkout'){
+            steps{
+                git branch: 'main', credentialsId: 'github_credentials', url: 'https://github.com/fjroldan/ansible-books.git'
+            }
+        }
+        stage('Ansible playbook'){
+            steps{
+                sh 'sudo ansible-playbook ./azure-vm-manage/azure-install-packer-ws.yml'
+            }
+        }
+    }
+}
