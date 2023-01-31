@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+    agent { label 'production_agent' }
     environment {
         ARM = credentials('azure_pipeline')
     }
