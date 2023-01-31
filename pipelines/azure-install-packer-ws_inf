@@ -11,7 +11,7 @@ pipeline{
         }
         stage('Ansible playbook'){
             steps{
-                sh 'sudo ansible-playbook ./azure-vm-manage/azure-install-packer-ws.yml'
+                sh 'ansible-playbook ./azure-vm-manage/azure-install-packer-ws.yml'
             }
         }
     }
