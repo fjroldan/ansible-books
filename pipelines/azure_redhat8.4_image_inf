@@ -11,7 +11,7 @@ pipeline{
         }
         stage('Packer build'){
             steps{
-                sh 'packer build ./packer/azure/red_hat/'
+                sh 'packer build ./packer/azure/red_hat_8.4/'
             }
         }
     }
