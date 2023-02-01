@@ -1,4 +1,4 @@
-location = "Brazil South"
+location = "West Europe"
 managed_image_name = "RedHat-8.4"
 managed_image_resource_group_name = "Deploy"
 vm_size = "Standard_DS2_v2"
