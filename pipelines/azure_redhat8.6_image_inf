@@ -1,0 +1,18 @@
+pipeline{
+    agent { label 'production_agent' }
+    environment {
+        ARM = credentials('azure_pipeline')
+    }
+    stages{
+        stage('Git checkout'){
+            steps{
+                git branch: 'main', credentialsId: 'github_credentials', url: 'https://github.com/fjroldan/ansible-books.git'
+            }
+        }
+        stage('Packer build'){
+            steps{
+                sh 'packer build ./packer/azure/red_hat_8.6/'
+            }
+        }
+    }
+}
